@@ -1,0 +1,2 @@
+.\setup.ps1                 # Run setup
+.\start.ps1                 # Start the application

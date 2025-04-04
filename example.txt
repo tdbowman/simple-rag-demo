@@ -1,0 +1,28 @@
+Welcome to the Simple RAG System Demo!
+
+This is an example document that you can use to test the RAG system. The system is designed to help you understand how Retrieval-Augmented Generation works.
+
+Key Features:
+1. Document Processing: The system can handle PDF and TXT files
+2. Web Content: You can add URLs to scrape and index content
+3. Vector Storage: Documents are stored in a Qdrant vector database
+4. Language Model: Uses Llama 2 for generating responses
+5. User Interface: Simple Streamlit interface for interaction
+
+To get started:
+1. Upload this file or other documents
+2. Add some URLs if you want to include web content
+3. Ask questions about the content
+4. The system will retrieve relevant information and generate answers
+
+The system works by:
+1. Breaking documents into chunks
+2. Creating embeddings for each chunk
+3. Storing embeddings in the vector database
+4. Retrieving relevant chunks when you ask a question
+5. Using the language model to generate answers based on the retrieved content
+
+Try asking questions like:
+- What are the key features of this system?
+- How does the RAG system work?
+- What types of documents can I upload? 
