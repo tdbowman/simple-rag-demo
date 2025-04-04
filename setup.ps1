@@ -44,10 +44,11 @@ pip install -r requirements.txt
 
 # Pull Llama model
 Write-Host "Pulling Llama 2 model..." -ForegroundColor Green
-ollama pull llama2:1.3b
+ollama pull llama2
 
-# Start Qdrant
+# Start Qdrant (stop any existing container first)
 Write-Host "Starting Qdrant..." -ForegroundColor Green
+docker stop $(docker ps -q --filter ancestor=qdrant/qdrant) 2>$null
 docker run -d -p 6333:6333 qdrant/qdrant
 
 Write-Host "Setup complete!" -ForegroundColor Green
