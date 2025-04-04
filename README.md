@@ -12,6 +12,7 @@ This project demonstrates a basic Retrieval-Augmented Generation (RAG) system us
 - Chat with your documents using Llama 3.2 1B model
 - Simple and intuitive Streamlit interface
 - Well-documented code for educational purposes
+- Automatic virtual environment setup
 
 ## Prerequisites
 
@@ -33,6 +34,12 @@ This project demonstrates a basic Retrieval-Augmented Generation (RAG) system us
    ```bash
    ./setup.sh
    ```
+   This will:
+   - Create a Python virtual environment
+   - Install all required packages
+   - Pull the Llama model
+   - Start Qdrant
+   - Create a start script
 
 3. Start the application:
    ```bash
@@ -45,6 +52,12 @@ This project demonstrates a basic Retrieval-Augmented Generation (RAG) system us
    ```powershell
    .\setup.ps1
    ```
+   This will:
+   - Create a Python virtual environment
+   - Install all required packages
+   - Pull the Llama model
+   - Start Qdrant
+   - Create a start script
 
 2. Start the application:
    ```powershell
@@ -61,17 +74,28 @@ If you prefer to set up manually:
    cd simple-rag-demo
    ```
 
-2. Install the required packages:
+2. Create and activate a virtual environment:
+   ```bash
+   # For macOS/Linux
+   python3 -m venv venv
+   source venv/bin/activate
+
+   # For Windows
+   python -m venv venv
+   .\venv\Scripts\Activate.ps1
+   ```
+
+3. Install the required packages:
    ```bash
    pip install -r requirements.txt
    ```
 
-3. Install Ollama and pull the Llama 3.2 1B model:
+4. Install Ollama and pull the Llama 3.2 1B model:
    ```bash
    ollama pull llama2:1.3b
    ```
 
-4. Start Qdrant locally:
+5. Start Qdrant locally:
    ```bash
    docker run -p 6333:6333 qdrant/qdrant
    ```
@@ -84,7 +108,8 @@ simple-rag-demo/
 ├── document_processor.py  # Handles document loading and processing
 ├── vector_store.py       # Manages the Qdrant vector database
 ├── rag_system.py         # Core RAG implementation
-├── tutorial.ipynb        # Jupyter notebook explaining the project
+├── tutorial.ipynb        # Basic tutorial notebook
+├── advanced_tutorial.ipynb # Advanced features tutorial
 ├── setup.sh              # Setup script for macOS/Linux
 ├── setup.ps1             # Setup script for Windows
 ├── start.sh              # Start script for macOS/Linux
@@ -99,6 +124,13 @@ simple-rag-demo/
 
 1. Start the Streamlit app using the start script or manually:
    ```bash
+   # Using the start script
+   ./start.sh  # macOS/Linux
+   .\start.ps1 # Windows
+
+   # Or manually
+   source venv/bin/activate  # macOS/Linux
+   .\venv\Scripts\Activate.ps1  # Windows
    streamlit run app.py
    ```
 
@@ -115,12 +147,9 @@ simple-rag-demo/
 
 ## Educational Resources
 
-Check out the `tutorial.ipynb` notebook for a detailed explanation of how the RAG system works, including:
-- Document processing
-- Vector embeddings
-- Retrieval mechanisms
-- Response generation
-- System architecture
+Check out the tutorial notebooks for detailed explanations:
+- `tutorial.ipynb`: Basic RAG system concepts
+- `advanced_tutorial.ipynb`: Advanced features and customizations
 
 ## Contributing
 

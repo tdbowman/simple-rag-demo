@@ -34,7 +34,14 @@ fi
 # Create and activate virtual environment
 echo -e "${GREEN}Creating virtual environment...${NC}"
 python3 -m venv venv
+
+# Activate virtual environment
+echo -e "${GREEN}Activating virtual environment...${NC}"
 source venv/bin/activate
+
+# Upgrade pip
+echo -e "${GREEN}Upgrading pip...${NC}"
+pip install --upgrade pip
 
 # Install requirements
 echo -e "${GREEN}Installing Python packages...${NC}"
@@ -51,4 +58,16 @@ docker run -d -p 6333:6333 qdrant/qdrant
 echo -e "${GREEN}Setup complete!${NC}"
 echo -e "${YELLOW}To start the application, run:${NC}"
 echo -e "source venv/bin/activate"
-echo -e "streamlit run app.py" 
+echo -e "streamlit run app.py"
+
+# Create a start script
+echo -e "${GREEN}Creating start script...${NC}"
+cat > start.sh << 'EOF'
+#!/bin/bash
+source venv/bin/activate
+streamlit run app.py
+EOF
+chmod +x start.sh
+
+echo -e "${GREEN}You can now start the application by running:${NC}"
+echo -e "./start.sh" 

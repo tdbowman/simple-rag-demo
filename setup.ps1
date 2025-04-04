@@ -29,7 +29,14 @@ if (-not (Get-Command ollama -ErrorAction SilentlyContinue)) {
 # Create and activate virtual environment
 Write-Host "Creating virtual environment..." -ForegroundColor Green
 python -m venv venv
+
+# Activate virtual environment
+Write-Host "Activating virtual environment..." -ForegroundColor Green
 .\venv\Scripts\Activate.ps1
+
+# Upgrade pip
+Write-Host "Upgrading pip..." -ForegroundColor Green
+pip install --upgrade pip
 
 # Install requirements
 Write-Host "Installing Python packages..." -ForegroundColor Green
@@ -46,4 +53,17 @@ docker run -d -p 6333:6333 qdrant/qdrant
 Write-Host "Setup complete!" -ForegroundColor Green
 Write-Host "To start the application, run:" -ForegroundColor Yellow
 Write-Host ".\venv\Scripts\Activate.ps1"
-Write-Host "streamlit run app.py" 
+Write-Host "streamlit run app.py"
+
+# Create a start script
+Write-Host "Creating start script..." -ForegroundColor Green
+@"
+# Activate virtual environment
+.\venv\Scripts\Activate.ps1
+
+# Start Streamlit app
+streamlit run app.py
+"@ | Out-File -FilePath "start.ps1" -Encoding UTF8
+
+Write-Host "You can now start the application by running:" -ForegroundColor Green
+Write-Host ".\start.ps1" 
